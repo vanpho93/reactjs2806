@@ -10,9 +10,22 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
+
+      const htmlA = <a href="http://google.com">Google</a>;
+
+      const KhoaHoc = ({ tenGiangVien, children, color }) => (
+        <div>
+          <h3 style={{ color }}>Khoc hoc: { children }</h3>
+          <p>Giang vien: { tenGiangVien }</p>
+        </div>
+      );
+      
       ReactDOM.render(
-          <a href="http://google.com">Google</a>,
-          document.getElementById('root')
+        <div>
+          <KhoaHoc tenGiangVien="Pho" color="green">NodeJS</KhoaHoc>
+          <KhoaHoc tenGiangVien="Khoa" color="red">ReactJS</KhoaHoc>
+        </div>,
+        document.getElementById('root')
       );
     </script>
   </body>
