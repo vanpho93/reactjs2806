@@ -14,29 +14,28 @@
             constructor(props) {
                 super(props);
                 this.state = {
-                    value: 1
+                    value: 0
                 };
             }
 
             up() {
                 // this.setState(state => state.value += 1);
-                this.setState({ value: this.state.value % 5 + 1 });
+                this.setState({ value: this.state.value + 1 });
             }
 
             down() {
                 // this.setState(state => state.value += 1);
-                const { value } = this.state;
-                this.setState({ value: value === 1 ? 5 : value - 1 });
+                this.setState({ value: this.state.value - 1 });
             }
 
             render() {
-                const { value } = this.state;
+                function getColor(v) {
+                    return v % 2 === 0 ? 'green' : 'red';
+                }
                 return (
                     <div>
-                        <img src={`images/${value}.jpg`} width="300"/>
-                        <img src={`images/${value + 1}.jpg`} width="300"/>
-                        <br />
-                        <button onClick={this.up.bind(this)}>Up</button>
+                        <div style={{ color: getColor(this.state.value) }}>{this.state.value}</div>
+                        <button onClick={this.up.bind(this)}>Up</button><br />
                         <button onClick={this.down.bind(this)}>Down</button>
                     </div>
                 );
