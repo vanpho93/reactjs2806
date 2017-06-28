@@ -32,11 +32,17 @@
                 function getColor(v) {
                     return v % 2 === 0 ? 'green' : 'red';
                 }
+
+                const messageHtml = this.state.value % 2 === 0 ? undefined : <p>so le</p>
+                const getMessageHtml = () => this.state.value % 2 === 0 ? undefined : <p>so le</p>;
+
                 return (
                     <div>
                         <div style={{ color: getColor(this.state.value) }}>{this.state.value}</div>
                         <button onClick={this.up.bind(this)}>Up</button><br />
                         <button onClick={this.down.bind(this)}>Down</button>
+                        { messageHtml }
+                        { getMessageHtml.bind(this)() }
                     </div>
                 );
             }
